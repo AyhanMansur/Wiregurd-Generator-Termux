@@ -1,12 +1,4 @@
 #Copyright  = Ban
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-WGAyhan: Advanced WireGuard Generator with Auto-Save
-Features: Dual-Endpoint (ArvanCloud + Cloudflare), Auto-Save to Downloads
-Author: Ayhan (Optimized for tired users!)
-"""
-
 import os
 import subprocess
 import random
