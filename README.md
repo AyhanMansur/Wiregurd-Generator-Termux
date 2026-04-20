@@ -1,4 +1,3 @@
-![Uploading Screenshot 2026-04-19 173431.png…]()
 
 # Wiregurd-Generator-Termux
 This Super cool python script you can clone this on termux
@@ -28,6 +27,8 @@ A lightweight, cross-platform Python utility designed to generate secure, single
    **Linux (Ubuntu/Debian):**
    ```bash
    sudo apt update && sudo apt install wireguard
+   
    curl -o WGAyhan.py https://raw.githubusercontent.com/AyhanMansur/Wiregurd-Generator-Termux/refs/heads/main/WGAyhan.py
+   
    python3 WGAyhan.py
 
