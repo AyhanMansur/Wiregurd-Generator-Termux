@@ -1,8 +1,19 @@
 #Copyright  = Ban
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+WGAyhan: Advanced WireGuard Generator with Auto-Save
+Features: Dual-Endpoint (ArvanCloud + Cloudflare), Auto-Save to Downloads
+Author: Ayhan (Optimized for tired users!)
+"""
+
 import os
 import subprocess
 import random
 from datetime import datetime
+
+# مسیر پیش‌فرض برای ذخیره خودکار (مخصوص اندروید/ترموکس)
+DEFAULT_SAVE_PATH = "/sdcard/Download"
 
 def run_command(cmd):
     """Run a shell command and return output."""
@@ -30,25 +41,23 @@ def generate_keys():
 
 def get_smart_endpoint():
     """Select a random, masked endpoint from ArvanCloud or Cloudflare."""
-    # ArvanCloud IP ranges (Examples)
     arvan_ips = [
         "5.23.100.1", "5.23.100.2", "5.23.101.1", "5.23.102.1",
         "185.143.223.1", "185.143.223.2", "185.143.224.1"
     ]
-    # Cloudflare IP ranges (Examples)
     cloudflare_ips = [
         "1.1.1.1", "1.0.0.1", "1.1.1.2", "1.0.0.2",
         "104.16.132.229", "104.16.133.229", "104.16.134.229"
     ]
     
-    # Combine and pick one randomly
     all_ips = arvan_ips + cloudflare_ips
     return random.choice(all_ips)
 
-def create_config(private_key, public_key, endpoint_ip):
-    """Create the WireGuard configuration string."""
+def create_and_save_config(private_key, public_key, endpoint_ip):
+    """Create config and auto-save to Downloads folder."""
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"WGAyhan_Config_{timestamp}.conf"
+    full_path = os.path.join(DEFAULT_SAVE_PATH, filename)
     
     config = f"""[Interface]
 PrivateKey = {private_key}
@@ -63,18 +72,25 @@ PersistentKeepalive = 25
 """
     
     try:
-        with open(filename, 'w') as f:
+        # اطمینان از وجود پوشه دانلود
+        if not os.path.exists(DEFAULT_SAVE_PATH):
+            os.makedirs(DEFAULT_SAVE_PATH)
+        
+        with open(full_path, 'w') as f:
             f.write(config)
-        print(f"\n✅ Success! Config saved to: {filename}")
+        
+        print(f"\n✅ Success! Config auto-saved to:")
+        print(f"📂 {full_path}")
         print(f"🔒 Endpoint masked as: {endpoint_ip}:443")
-        print("📱 Import this file into your WireGuard app to start.")
-        return filename
+        print("📱 Check your 'Downloads' folder or open WireGuard app to import.")
+        return full_path
     except Exception as e:
         print(f"❌ Error saving file: {e}")
+        print("   Make sure you have write permissions in Termux.")
         return None
 
 def main():
-    print("🚀 WGAyhan: Advanced WireGuard Generator")
+    print("🚀 WGAyhan: Advanced WireGuard Generator (Auto-Save Mode)")
     print("-" * 40)
     
     # Check if wg is available
@@ -90,8 +106,7 @@ def main():
         return
 
     endpoint_ip = get_smart_endpoint()
-    create_config(private_key, public_key, endpoint_ip)
+    create_and_save_config(private_key, public_key, endpoint_ip)
 
 if __name__ == "__main__":
     main()
-
