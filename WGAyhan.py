@@ -4,11 +4,6 @@ import subprocess
 import random
 from datetime import datetime
 
-# مسیر ذخیره: پوشه اصلی ترموکس (همیشه در دسترس و بدون نیاز به مجوز)
-# اگر می‌خوای توی پوشه Downloads ذخیره بشه، باید اول دستور 'termux-setup-storage' رو بزنی
-# اما برای اطمینان ۱۰۰٪، اینجا از پوشه فعلی استفاده می‌کنیم.
-SAVE_DIR = os.getcwd() 
-
 def run_command(cmd):
     try:
         result = subprocess.run(cmd, shell=True, capture_output=True, text=True, check=True)
@@ -43,10 +38,31 @@ def get_smart_endpoint():
     all_ips = arvan_ips + cloudflare_ips
     return random.choice(all_ips)
 
-def create_and_save_config(private_key, public_key, endpoint_ip):
+def ask_save_location():
+    """Ask user where to save the config file."""
+    print("\n📂 Where do you want to save the config file?")
+    print("1. Save in current folder (Safe & Easy)")
+    print("2. Save in Downloads folder (Requires permission)")
+    
+    while True:
+        choice = input("Enter 1 or 2: ").strip()
+        if choice == '1':
+            return os.getcwd()
+        elif choice == '2':
+            # Check if storage permission is granted
+            if os.path.exists("/sdcard"):
+                return "/sdcard/Download"
+            else:
+                print("⚠️  Storage permission not granted! Please run 'termux-setup-storage' first.")
+                print("   Or choose option 1 to save locally.")
+                continue
+        else:
+            print("❌ Invalid choice. Please enter 1 or 2.")
+
+def create_and_save_config(private_key, public_key, endpoint_ip, save_path):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"WGAyhan_Config_{timestamp}.conf"
-    full_path = os.path.join(SAVE_DIR, filename)
+    full_path = os.path.join(save_path, filename)
     
     config = f"""[Interface]
 PrivateKey = {private_key}
@@ -61,20 +77,25 @@ PersistentKeepalive = 25
 """
     
     try:
+        # Create directory if it doesn't exist (for Downloads)
+        if not os.path.exists(save_path):
+            os.makedirs(save_path)
+        
         with open(full_path, 'w') as f:
             f.write(config)
         
         print(f"\n✅ Success! Config saved to:")
         print(f"📂 {full_path}")
         print(f"🔒 Endpoint masked as: {endpoint_ip}:443")
-        print("📱 To move to Downloads: run 'cp {filename} /sdcard/Download/'")
+        print("📱 Import this file into your WireGuard app.")
         return full_path
     except Exception as e:
         print(f"❌ Error saving file: {e}")
+        print("   Make sure you have write permissions.")
         return None
 
 def main():
-    print("🚀 WGAyhan: Fixed Auto-Save Mode")
+    print("🚀 WGAyhan: Interactive Save Location Mode")
     print("-" * 40)
     
     if not run_command("wg --version"):
@@ -87,7 +108,11 @@ def main():
         return
 
     endpoint_ip = get_smart_endpoint()
-    create_and_save_config(private_key, public_key, endpoint_ip)
+    
+    # Ask user for save location
+    save_path = ask_save_location()
+    
+    create_and_save_config(private_key, public_key, endpoint_ip, save_path)
 
 if __name__ == "__main__":
     main()
