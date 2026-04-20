@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-WGAyhan: Fixed Auto-Save Version
-Fixes: Uses local directory to bypass Android permission issues.
-"""
-
+#copyright = DDos Attack 
 import os
 import subprocess
 import random
