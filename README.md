@@ -1,5 +1,6 @@
+
 <p align="center">
-  <img src="Screenshot_۲۰۲۶۰۴۲۰_۰۵۵۶۴۴_Termux.jpg">
+  <img src="Screenshot_۲۰۲۶۰۴۲۰_۰۵۵۶۴۴_Termux.jpg" alt="Termux Screenshot" width="234">
 </p>
 
 # Wiregurd-Generator-Termux
