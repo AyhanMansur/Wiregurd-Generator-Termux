@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="Screenshot_۲۰۲۶۰۴۲۰_۰۵۵۶۴۴_Termux.jpg">
+</p>
 
 # Wiregurd-Generator-Termux
 This Super cool python script you can clone this on termux
