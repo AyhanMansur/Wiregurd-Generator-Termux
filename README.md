@@ -30,7 +30,6 @@ This tool simplifies the process of creating privacy-focused tunnels by automati
 - **WireGuard Tools** installed on the host system.
 
 ### Step 1: Install WireGuard Tools
-
-**For Linux (Ubuntu/Debian):**
+**For Android (Termux):**
 ```bash
-sudo apt update && sudo apt install wireguard
+pkg update && pkg install wireguard-tools
