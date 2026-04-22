@@ -1,38 +1,36 @@
 
-<p align="center">
-  <img src="First run 😎.jpg" alt="Termux Screenshot" width="194">
-</p>
+# 🛡️ WireGuard Config Generator (Termux & Linux)
 
-# Wiregurd-Generator-Termux
-This Super cool python script you can clone this on termux
+<div align="center">
+  <img src="https://raw.githubusercontent.com/AyhanMansur/Wiregurd-Generator-Termux/main/First%20run%20😎.jpg" alt="Demo Screenshot" width="134">
+  <br>
+  <i>A lightweight, cross-platform utility for generating secure, obfuscated WireGuard configurations.</i>
+</div>
 
-# Big Bridge: Secure WireGuard Config Generator
+---
 
-A lightweight, cross-platform Python utility designed to generate secure, single-peer WireGuard configurations with dynamic IP masking. This tool helps obfuscate traffic by selecting endpoints from trusted IP ranges (ArvanCloud, Cloudflare), making tunnel traffic appear as standard HTTPS traffic.
+## 📋 Overview
 
-## 🚀 Features
+**WireGuard-Generator** is a high-performance Python utility designed to generate secure, single-peer WireGuard configurations with dynamic IP masking. 
 
-- **Automated Key Generation**: Uses native `wg` tools for cryptographically secure key pairs.
-- **Traffic Obfuscation**: Dynamically selects server endpoints from ArvanCloud and Cloudflare IP ranges.
-- **Single-Peer Architecture**: Generates optimized configs with a single peer for maximum performance.
-- **Cross-Platform**: Fully compatible with Linux (Ubuntu/Debian) and Android (Termux).
-- **Zero Dependencies**: Relies only on standard Python libraries and system `wireguard-tools`.
+This tool simplifies the process of creating privacy-focused tunnels by automatically selecting endpoints from trusted, high-performance IP ranges (such as **ArvanCloud** and **Cloudflare**). This effectively obfuscates traffic, making your tunnel traffic appear as standard HTTPS traffic to bypass restrictions and enhance anonymity.
 
-## 🛠️ Installation
+## ✨ Key Features
+
+- 🔐 **Automated Key Generation**: Utilizes native `wg` tools to generate cryptographically secure key pairs instantly.
+- 🌐 **Traffic Obfuscation**: Dynamically selects server endpoints from trusted IP ranges to mask tunnel traffic.
+- ⚡ **Optimized Performance**: Generates single-peer configurations for maximum speed and minimal latency.
+- 📱 **Cross-Platform**: Fully compatible with **Linux** (Ubuntu/Debian) and **Android** (Termux).
+- 📦 **Zero Dependencies**: Relies solely on standard Python libraries and system `wireguard-tools`.
+
+## 🛠️ Installation & Usage
 
 ### Prerequisites
-- Python 3.6+
-- `wireguard-tools` installed on the host system.
+- **Python 3.6+**
+- **WireGuard Tools** installed on the host system.
 
-### Setup
+### Step 1: Install WireGuard Tools
 
-1. **Install WireGuard Tools**
-
-   **Linux (Ubuntu/Debian):**
-   ```bash
-   sudo apt update && sudo apt install wireguard
-   
-   curl -o WGAyhan.py https://raw.githubusercontent.com/AyhanMansur/Wiregurd-Generator-Termux/refs/heads/main/WGAyhan.py
-   
-   python3 WGAyhan.py
-
+**For Linux (Ubuntu/Debian):**
+```bash
+sudo apt update && sudo apt install wireguard
