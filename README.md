@@ -30,6 +30,12 @@
 
 ### مرحله ۱: نصب ابزارهای WireGuard
 
-**برای لینوکس (Ubuntu/Debian):**
+**برای اندروید (Termux):**
 ```bash
-sudo apt update && sudo apt install wireguard
+pkg update && pkg install wireguard-tools
+
+ pkg install python
+
+ curl -O https://raw.githubusercontent.com/AyhanMansur/Wiregurd-Generator-Termux/refs/heads/main/WGAyhan.py
+
+ python3 WGAyhan.py
