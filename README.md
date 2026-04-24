@@ -28,14 +28,18 @@ This tool simplifies the process of creating privacy-focused tunnels by automati
 ### Prerequisites
 - **Python 3.6+**
 - **WireGuard Tools** installed on the host system.
+- Important Notes for Termux:
+Permissions: If you choose to save to /sdcard/Download, you must run termux-setup-storage first and grant permission.
 
 ### Step 1: Install WireGuard Tools
 **For Android (Termux):**
 ```bash
 pkg update && pkg install wireguard-tools
 
- pkg install python
+termux-setup-storage
 
- curl -O https://raw.githubusercontent.com/AyhanMansur/Wiregurd-Generator-Termux/refs/heads/main/WGAyhan.py
+pkg install python
 
- python3 WGAyhan.py
+curl -O https://raw.githubusercontent.com/AyhanMansur/Wiregurd-Generator-Termux/refs/heads/main/WGAyhan.py
+
+python3 WGAyhan.py
