@@ -27,9 +27,16 @@
 ### پیش‌نیازها
 - **Python 3.6+**
 - نصب بودن ابزارهای **WireGuard** روی سیستم.
-
-### مرحله ۱: نصب ابزارهای WireGuard
 نکات مهم برای Termux:
 دسترسی‌ها (Permissions): اگر گزینه ذخیره در پوشه /sdcard/Download را انتخاب کنید، ابتدا باید دستور termux-setup-storage را اجرا کنید و مجوزهای لازم را به برنامه بدهید.
+### مرحله ۱: نصب ابزارهای WireGuard
+
+**برای اندروید (Termux):**
 ```bash
-sudo apt update && sudo apt install wireguard
+pkg update && pkg install wireguard-tools
+
+ pkg install python
+
+ curl -O https://raw.githubusercontent.com/AyhanMansur/Wiregurd-Generator-Termux/refs/heads/main/WGAyhan.py
+
+ python3 WGAyhan.py
