@@ -33,3 +33,9 @@ This tool simplifies the process of creating privacy-focused tunnels by automati
 **For Android (Termux):**
 ```bash
 pkg update && pkg install wireguard-tools
+
+ pkg install python
+
+ curl -O https://raw.githubusercontent.com/AyhanMansur/Wiregurd-Generator-Termux/refs/heads/main/WGAyhan.py
+
+ python3 WGAyhan.py
