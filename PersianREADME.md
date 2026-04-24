@@ -29,7 +29,7 @@
 - نصب بودن ابزارهای **WireGuard** روی سیستم.
 
 ### مرحله ۱: نصب ابزارهای WireGuard
-
-**برای لینوکس (Ubuntu/Debian):**
+نکات مهم برای Termux:
+دسترسی‌ها (Permissions): اگر گزینه ذخیره در پوشه /sdcard/Download را انتخاب کنید، ابتدا باید دستور termux-setup-storage را اجرا کنید و مجوزهای لازم را به برنامه بدهید.
 ```bash
 sudo apt update && sudo apt install wireguard
