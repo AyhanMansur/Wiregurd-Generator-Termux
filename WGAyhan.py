@@ -1,4 +1,4 @@
-# CopyRight = DDos Atack
+# CopyRight = DDos Atack 🛡️
 import os
 import sys
 import random
